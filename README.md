@@ -1,0 +1,2 @@
+# qt_minesweeper_ui
+minesweeper_ui_of_qt
