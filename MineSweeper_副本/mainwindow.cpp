@@ -2,14 +2,17 @@
 #include "ui_mainwindow.h"
 #include <QPainter>
 #include <QMouseEvent>
+#include <QDebug>
 #include <QtGlobal>
 #include <QTime>
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     Chushihua();
+
+
 }
 
 MainWindow::~MainWindow()
@@ -22,7 +25,6 @@ void MainWindow::paintEvent(QPaintEvent *)
     Choose_mode(ui);
     setFixedSize(col*32,(row+1)*32);
     Print_chart(paint);
-    paint.end();
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *ev)
@@ -90,65 +92,70 @@ void MainWindow::Print_chart(QPainter &paint)
     int x = 0,y = 32;
     switch(process)
     {
-    case 0:
+        case 0:
         x = 0;y = 32;
-        for(int i = 0;i < row;i++,y+=32)
-        {
-            for(int j = 0;j < col;j++,x+=32)
+            for(int i = 0;i < row;i++,y+=32)
             {
-                if(chart[i][j].sign != '0'&&chart[i][j].dian == '.')
+                for(int j = 0;j < col;j++,x+=32)
                 {
-                    paint.drawPixmap(x,y,MainWindow::topicture(chart[i][j].sign));
+                    if(chart[i][j].sign != '0'&&chart[i][j].dian == '.')
+                    {
+                        paint.drawPixmap(x,y,MainWindow::topicture(chart[i][j].sign));
 
+                    }
+                    else
+                    {
+                        paint.drawPixmap(x,y,MainWindow::topicture(chart[i][j].dian));
+
+
+                    }
                 }
-                else
+                x=0;
+            }
+            break;
+        default:
+        x = 0;y = 32;
+            for(int i = 0;i < row;i++,x = 0,y+=32)
+            {
+                for(int j = 0;j < col;j++,x+=32)
                 {
-                    paint.drawPixmap(x,y,MainWindow::topicture(chart[i][j].dian));
-
-
+                    if(chart[i][j].bomb == '*')
+                    {
+                        paint.drawPixmap(x,y,MainWindow::topicture(chart[i][j].bomb));
+                    }
+                    else if(chart[i][j].sign != '0'&&chart[i][j].dian == '0')
+                    {
+                        paint.drawPixmap(x,y,MainWindow::topicture(chart[i][j].sign));
+                    }
+                    else
+                    {
+                        paint.drawPixmap(x,y,MainWindow::topicture(chart[i][j].dian));
+                    }
                 }
             }
-            x=0;
-        }
-        break;
-    default:
-        x = 0;y = 32;
-        for(int i = 0;i < row;i++,x = 0,y+=32)
-        {
-            for(int j = 0;j < col;j++,x+=32)
-            {
-                if(chart[i][j].bomb == '*')
-                {
-                    paint.drawPixmap(x,y,MainWindow::topicture(chart[i][j].bomb));
-                }
-                else if(chart[i][j].sign != '0'&&chart[i][j].dian == '0')
-                {
-                    paint.drawPixmap(x,y,MainWindow::topicture(chart[i][j].sign));
-                }
-                else
-                {
-                    paint.drawPixmap(x,y,MainWindow::topicture(chart[i][j].dian));
-                }
-            }
-        }
-        break;
+            break;
     }
 }
 void MainWindow::Left_click(int &x,int &y)
 {
+    qDebug()<<"jinqu";
+
     if(x < 0||x >= row||y < 0||y >= col)
     {
         return;
     }
+    qDebug()<<"guodiyiguan";
     if(chart[x][y].dian != '.'||chart[x][y].sign == '!')
     {
         return;
     }
+    qDebug()<<"guoditwoguan";
     if(chart[x][y].bomb == '*')
     {
         process = 1;
         return;
     }
+    qDebug()<<"guoditherrguan";
     int around_minesnum = Calculate_bombnum(x, y);
     if(around_minesnum != 0)
     {
@@ -213,35 +220,32 @@ void MainWindow::Chushihua()
     process = 0;
     firstclick = 0;
     for(int i = 0;i<row;i++){
-        for(int j = 0;j < col;j++){
-            chart[i][j].dian = '.';
-            chart[i][j].sign = '0';
-            chart[i][j].bomb = '0';
+            for(int j = 0;j < col;j++){
+             chart[i][j].dian = '.';
+             chart[i][j].sign = '0';
+             chart[i][j].bomb = '0';
+            }
         }
-    }
     repaint();
 
 }
 void MainWindow::Avoidfirstfail(int &xx,int &yy)
 {
-    srand(QTime::currentTime().msec());
+    qsrand(QTime::currentTime().msec());
     for(int k = 0;k < bombnum;){
-        qDebug()<<"分雷中";
-        int x = rand()%row;
-        int y = rand()%col;
+        int x = qrand()%row;
+        int y = qrand()%col;
         if(chart[x][y].bomb != '*'&&(x!=xx||x!=yy)){
             chart[x][y].bomb = '*';
             k++;
         }
 
     }
-    qDebug()<<"结束"<<fenleicishu++;
 }
 
 void MainWindow::Choose_mode(Ui::MainWindow *ui)
 {
     connect(ui->actionchuji,&QAction::triggered,[=](){
-
         this->Choosechuji();
         Chushihua();
     });
@@ -298,10 +302,14 @@ void MainWindow::L_and_R_click(int &x,int &y)
                 }
                 if(chart[i][j].dian == '.'&&chart[i][j].sign == '0')
                 {
-                    Left_click(i,j);
+                   Left_click(i,j);
                 }
             }
         }
 
     }
 }
+
+
+
+

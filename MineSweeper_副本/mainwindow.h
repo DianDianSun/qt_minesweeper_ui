@@ -3,10 +3,10 @@
 
 #include <QMainWindow>
 #include <QPainter>
-QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
-QT_END_NAMESPACE
-
+#include <QDebug>
+namespace Ui {
+class MainWindow;
+}
 class my_chart
 {
 public:
@@ -14,12 +14,13 @@ public:
     char sign;
     char bomb;
 };
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     my_chart chart[24][30];
     int row = 9;
@@ -28,7 +29,6 @@ public:
     int remainbomb = bombnum;
     int process = 0;
     int firstclick = 0;
-    int fenleicishu = 0;
     void paintEvent(QPaintEvent *);
     void mousePressEvent(QMouseEvent *ev);
     QPixmap topicture(char ch);
@@ -45,7 +45,9 @@ public:
     void Choosezhongji(){row = 16;col = 16;bombnum = 40;remainbomb = bombnum;}
     void Choosegaoji(){row = 16;col = 30;bombnum = 99;remainbomb = bombnum;}
 
+
 private:
     Ui::MainWindow *ui;
 };
+
 #endif // MAINWINDOW_H
