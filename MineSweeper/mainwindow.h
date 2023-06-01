@@ -1,19 +1,12 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+#include "mainui.h"
+#include "zidingyi2.h"
 #include <QMainWindow>
-#include <QPainter>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
-class my_chart
-{
-public:
-    char dian;
-    char sign;
-    char bomb;
-};
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -21,29 +14,15 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    my_chart chart[24][30];
-    int row = 9;
-    int col = 9;
-    int bombnum = 10;
-    int remainbomb = bombnum;
-    int process = 0;
-    int firstclick = 0;
-    int fenleicishu = 0;
-    void paintEvent(QPaintEvent *);
-    void mousePressEvent(QMouseEvent *ev);
-    QPixmap topicture(char ch);
-    void Choose_mode(Ui::MainWindow *ui);
-    void Print_chart(QPainter &paint);
-    void Left_click(int &x,int &y);
-    void Right_click(int &x,int &y);
-    int Calculate_bombnum(int &x, int &y);
-    void L_and_R_click(int &x,int &y);
-    void Double_click(int &x,int &y);
-    void Chushihua();
-    void Avoidfirstfail(int &xx,int &yy);
-    void Choosechuji(){row = 9;col = 9;bombnum = 10;remainbomb = bombnum;}
-    void Choosezhongji(){row = 16;col = 16;bombnum = 40;remainbomb = bombnum;}
-    void Choosegaoji(){row = 16;col = 30;bombnum = 99;remainbomb = bombnum;}
+    int pifu = 0;
+    zidingyi2 *selfding = NULL;
+    void Choose_mode(Ui::MainWindow *ui,QScreen *screen);
+    void Choosechuji(){Mainui->row = 9;Mainui->col = 9;Mainui->bombnum = 10;Mainui->remainbomb=Mainui->bombnum;}
+    void Choosezhongji(){Mainui->row = 16;Mainui->col = 16;Mainui->bombnum = 40;Mainui->remainbomb=Mainui->bombnum ;}
+    void Choosegaoji(){Mainui->row = 16;Mainui->col = 30;Mainui->bombnum = 99;Mainui->remainbomb = Mainui->bombnum;}
+
+    mainui *Mainui;
+
 
 private:
     Ui::MainWindow *ui;

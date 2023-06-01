@@ -10,13 +10,18 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainui.cpp \
+    mainwindow.cpp \
+    zidingyi2.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainui.h \
+    mainwindow.h \
+    zidingyi2.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    zidingyi2.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>pinktheme/biaolei.png</file>
         <file>pinktheme/biaowen.png</file>
         <file>pinktheme/bomb.png</file>
         <file>pinktheme/eight.png</file>
@@ -13,5 +12,6 @@
         <file>pinktheme/three.png</file>
         <file>pinktheme/two.png</file>
         <file>pinktheme/zero.png</file>
+        <file>pinktheme/biaolei.png</file>
     </qresource>
 </RCC>

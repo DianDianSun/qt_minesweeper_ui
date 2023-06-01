@@ -25,34 +25,137 @@
    </property>
    <widget class="QMenu" name="menugame">
     <property name="title">
-     <string>game</string>
+     <string>游戏</string>
     </property>
+    <addaction name="actionnew"/>
+    <addaction name="separator"/>
     <addaction name="actionchuji"/>
-    <addaction name="actiongaoji"/>
     <addaction name="actionzhongji"/>
+    <addaction name="actiongaoji"/>
     <addaction name="actionzidingyi"/>
+    <addaction name="separator"/>
+    <addaction name="actionquit"/>
+   </widget>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>换肤</string>
+    </property>
+    <addaction name="actionclassic"/>
+    <addaction name="actionmengnanfen"/>
+    <addaction name="actionlvsexinqing"/>
+    <addaction name="actionIKUN"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>辅助</string>
+    </property>
+    <addaction name="actionfuzhu"/>
+    <addaction name="actiontoushi"/>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>关于</string>
+    </property>
    </widget>
    <addaction name="menugame"/>
+   <addaction name="menu"/>
+   <addaction name="menu_2"/>
+   <addaction name="menu_3"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
   <action name="actionchuji">
    <property name="text">
-    <string>chuji</string>
-   </property>
-  </action>
-  <action name="actiongaoji">
-   <property name="text">
-    <string>gaoji</string>
+    <string>初级</string>
    </property>
   </action>
   <action name="actionzhongji">
    <property name="text">
-    <string>zhongji</string>
+    <string>中级</string>
+   </property>
+  </action>
+  <action name="actiongaoji">
+   <property name="text">
+    <string>高级</string>
    </property>
   </action>
   <action name="actionzidingyi">
    <property name="text">
-    <string>zidingyi</string>
+    <string>自定义</string>
+   </property>
+  </action>
+  <action name="actionquit">
+   <property name="text">
+    <string>退出</string>
+   </property>
+  </action>
+  <action name="actionclassic">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="application-exit"/>
+   </property>
+   <property name="text">
+    <string>经典原皮</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;经典原皮&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </action>
+  <action name="actionmengnanfen">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>猛男粉</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#55ff00;&quot;&gt;猛男粉&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </action>
+  <action name="actionlvsexinqing">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>绿色心情</string>
+   </property>
+  </action>
+  <action name="actionIKUN">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>IKUN</string>
+   </property>
+  </action>
+  <action name="actionfuzhu">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>辅助框框</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+H</string>
+   </property>
+  </action>
+  <action name="actiontoushi">
+   <property name="text">
+    <string>无敌透视</string>
+   </property>
+   <property name="shortcut">
+    <string>H</string>
+   </property>
+  </action>
+  <action name="actionnew">
+   <property name="text">
+    <string>新游戏</string>
    </property>
   </action>
  </widget>
