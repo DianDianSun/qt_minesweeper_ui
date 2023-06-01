@@ -218,7 +218,6 @@ void mainui::Avoidfirstfail(int &xx,int &yy)
 {
     srand(QTime::currentTime().msec());
     for(int k = 0;k < bombnum;){
-        qDebug()<<"分雷中";
         int x = rand()%row;
         int y = rand()%col;
         if(chart[x][y].bomb != '*'&&(x!=xx||x!=yy)){
@@ -227,10 +226,11 @@ void mainui::Avoidfirstfail(int &xx,int &yy)
         }
 
     }
-    qDebug()<<"结束"<<fenleicishu++;
 }
 void mainui::L_and_R_click(int &x,int &y)
 {
+    if(chart[x][y].dian == '.')
+        return;
     int signbomb = 0;
     for(int i = x - 1;i <= x + 1;i++)
     {
