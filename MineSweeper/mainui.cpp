@@ -216,15 +216,29 @@ void mainui::Chushihua()
 }
 void mainui::Avoidfirstfail(int &xx,int &yy)
 {
+    int nums = 0;
+    for(int i = xx - 1;i <= xx + 1;i++)
+    {
+        for(int j = yy - 1;j <= yy + 1;j++)
+        {
+
+            if(i< 0||i >= row||j < 0||j >= col)
+            {
+                continue;
+            }
+            chart[i][j].bomb = '}';
+            nums++;
+        }
+    }
+    qDebug()<<nums;
     srand(QTime::currentTime().msec());
     for(int k = 0;k < bombnum;){
         int x = rand()%row;
         int y = rand()%col;
-        if(chart[x][y].bomb != '*'&&(x!=xx||x!=yy)){
+        if(chart[x][y].bomb == '0'){
             chart[x][y].bomb = '*';
             k++;
         }
-
     }
 }
 void mainui::L_and_R_click(int &x,int &y)
@@ -298,3 +312,4 @@ void mainui::Puanduanshengli()
         this->process = 2;
     }
 }
+
