@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 10.0.1, 2023-05-31T19:18:27. -->
+<!-- Written by QtCreator 10.0.1, 2023-06-01T16:01:01. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -236,8 +236,9 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/ri/Desktop/Minesweeper/Minesweeper.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/ri/Desktop/Minesweeper/Minesweeper.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Minesweeper2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration://mac/Home/Desktop/qt_minesweeper_ui/MineSweeper/Minesweeper.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">//mac/Home/Desktop/qt_minesweeper_ui/MineSweeper/Minesweeper.pro</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>

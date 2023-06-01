@@ -4,12 +4,22 @@
 #include <QMouseEvent>
 #include <QtGlobal>
 #include <QTime>
+#include <QScreen>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     Chushihua();
+    ui->setupUi(this);
+    QScreen *screen = QGuiApplication::primaryScreen();
+    this->move((screen->geometry().width()-this->width())/2,(screen->geometry().height()-this->height())/2);
+    setFixedSize(col*32,row*32+72);
+    QLinearGradient gradient(0, 0, ui->menubar->width(), 0);
+    //    MainWindow::setStyleSheet("border: 2px solid rgb(253,225,239);");
+    ui->menubar->setStyleSheet("background-color: rgb(255,239,247); color: rgb(0,0,0);border: 0;");
+    //    MainWindow::setStyleSheet("background-color: rgb(255,239,247);");
+    Choose_mode(ui);
 }
 
 MainWindow::~MainWindow()
